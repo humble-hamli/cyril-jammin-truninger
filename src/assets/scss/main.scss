@@ -1,0 +1,81 @@
+// import icons
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+// import variables
+@import "./abstracts/variables";
+
+// Create your own map
+$custom-colors: (
+  "custom-color": #900,
+  "custom-color2": #200,
+);
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "~bootstrap/scss/bootstrap";
+
+main {
+  padding-left: 0 !important;
+  margin-right:0 !important;
+}
+
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+
+$grid-widht: calc((40% - 50px) / 5);
+
+.grid .card{
+  margin-bottom: 2rem;
+  width: $grid-widht;
+  img {
+    width: 100%;
+  }
+
+  div {
+    opacity: 0;
+    transition: 0.1s;
+    // mix-blend-mode: exclusion;
+    &:hover {
+      box-shadow: inset 0 -200px 200px -200px rgba(0, 0, 0, 1);
+      opacity: 1;
+      text-shadow: 1px 1px black;
+    }
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}
+
+.grid-item--width2 { width:  calc($grid-widht * 2 + 50px) !important;}
+.grid-item--width3 { width:  calc($grid-widht * 3) !important;}
+.grid-item--height2 { height: 200px !important; }
+.grid-item--height3 { height: 260px !important; }
+.grid-item--height4 { height: 360px !important; }
+
+
+.card-img-overlay  {
+  height: 200px;
+}
+
+#exhibitions a {
+  transition-property: padding-top padding-bottom;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  &:hover {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+}
